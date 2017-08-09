@@ -14,7 +14,13 @@ security:
             security: false
 
         main:
+            pattern: ^/admin
             anonymous: ~
+            http_basic: ~
+
+    access_control:
+        - { path: ^/admin, roles: IS_AUTHENTICATED_ANONYMOUSLY, ips: [10.0.3.21] }
+        - { path: ^/admin, roles: ROLE_NO_ACCESS }
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
